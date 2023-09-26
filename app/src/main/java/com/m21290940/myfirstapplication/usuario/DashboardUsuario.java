@@ -1,8 +1,11 @@
 package com.m21290940.myfirstapplication.usuario;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -42,5 +45,15 @@ public class DashboardUsuario extends AppCompatActivity {
         tvUserNombre .setText( userInfo.getNombre() );
         tvUserEmail  .setText( userInfo.getEmail() );
         tvUserEdad   .setText( userInfo.getEdad() + " ".concat( getString(R.string.tvUserEdadComplement) ) );
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.tollbar_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 }
