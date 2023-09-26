@@ -17,6 +17,7 @@ import com.m21290940.myfirstapplication.usuario.repository.UsuarioRepository;
 public class DashboardUsuario extends AppCompatActivity {
     private UsuarioRepository ur;
     private Usuario userInfo;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,9 @@ public class DashboardUsuario extends AppCompatActivity {
         String pass = getIntent().getStringExtra("pass");
         //Obtenemos información del usuario logueado
         userInfo = ur.getRegisteredUsers().get(usuario).get(pass);
+        toolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
 
         ShapeableImageView ivUserImage = findViewById(R.id.ivUserImage);
         if ( userInfo.getGenero() == 'h' )
@@ -49,11 +53,11 @@ public class DashboardUsuario extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.tollbar_menu, menu);
 
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
+
+
 }
