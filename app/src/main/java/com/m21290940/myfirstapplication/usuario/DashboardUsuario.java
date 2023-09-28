@@ -1,13 +1,15 @@
 package com.m21290940.myfirstapplication.usuario;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.EditText;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.imageview.ShapeableImageView;
 import com.m21290940.myfirstapplication.R;
@@ -29,6 +31,7 @@ public class DashboardUsuario extends AppCompatActivity {
         String pass = getIntent().getStringExtra("pass");
         //Obtenemos información del usuario logueado
         userInfo = ur.getRegisteredUsers().get(usuario).get(pass);
+
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
@@ -59,5 +62,16 @@ public class DashboardUsuario extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if ( item.getItemId() == R.id.miBorrar ){
+            Toast.makeText(this, "Borrar", Toast.LENGTH_LONG).show();
+        } else if ( item.getItemId() == R.id.miInfo ) {
+            Toast.makeText(this, "Info", Toast.LENGTH_LONG).show();
+        } else if ( item.getItemId() == R.id.miSetting ) {
+            Toast.makeText(this, "Settings", Toast.LENGTH_LONG).show();
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
 }
